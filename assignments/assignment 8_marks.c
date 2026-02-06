@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main(){
     int marks[5];
-    int total=0;
+    int total=0,i;
     float percentage;
     printf("Enter marks for 5 subjects:\n");
     for(int i=0;i<5;i++){
