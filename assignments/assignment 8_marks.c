@@ -1,15 +1,15 @@
 #include <stdio.h>
 int main(){
-    float marks[5];
-    float total=0;
+    int marks[5];
+    int total=0;
     float percentage;
     printf("Enter marks for 5 subjects:\n");
     for(int i=0;i<5;i++){
         printf("subject: %d",i+1);
-        scanf("%f", &marks[i]);
+        scanf("%d", &marks[i]);
         total+=marks[i];
     }
-    percentage=total/5;
+    percentage=total/5.0;
     
     if (percentage>=75){
         printf("Grade: A\n");
