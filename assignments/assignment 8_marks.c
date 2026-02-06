@@ -4,9 +4,9 @@ int main(){
     float total=0;
     float percentage;
     printf("Enter marks for 5 subjects:\n");
-    for(int i=0;i=5;i++){
+    for(int i=0;i<5;i++){
         printf("subject: %d",i+1);
-        scanf("%d", &marks[i]);\
+        scanf("%f", &marks[i]);
         total+=marks[i];
     }
     percentage=total/5;
