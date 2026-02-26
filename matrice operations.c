@@ -61,19 +61,27 @@ int main(){
         case 2:
         int min=0, max=0;
         printf("saddle point of matrices:\n");
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 3; i++) {   
             min=matrix[i][0];
-            for (j = 1; j < 3; j++) {
+            for (j = 0; j < 3; j++) {
                 if (matrix[i][j] < min) {
                     min = matrix[i][j];
                 }
-            }   
-            max=min;
+            }
+        }      
+        for (i = 0; i < 3; i++) {
+            max=matrix[i][0];
             for (j = 0; j < 3; j++) {
-                if (matrix[j][i] > max) {
-                    max = matrix[j][i];
-                    printf("saddle points are:"); 
-                    printf("%d %d ", max, min);
+                if (matrix[i][j] > max) {
+                    max = matrix[i][j];
+                }
+            }
+        }
+        if (min == max) {
+            printf("The saddle point is: %d\n", min);
+        } else {
+            printf("No saddle point found.\n");
+        }
         break;
         case 3:
         printf("inverse of matrices:\n");
