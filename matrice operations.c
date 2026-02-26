@@ -103,8 +103,17 @@ int main(){
                    (matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]) / determinant);
         }
         break;                       
-                    
-
+        case 4:
+        printf("magic square of matrices:\n");
+    
+        }
+        break;
+        case 5:
+        printf("Exiting the program.\n");
+        break;
+        default:
+        printf("Invalid choice. Please try again.\n");
+        break;
     }
 
 
