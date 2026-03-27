@@ -1,147 +1,177 @@
 #include <stdio.h>
 void main(){
-    int matrix_add;
-    int rows, columns;
-    printf("Enter the number of rows: ");
-    scanf("%d", &rows);
-    printf("Enter the number of columns: ");
-    scanf("%d", &columns);
-    int matrix1[rows][columns];
-    int matrix2[rows][columns];
-    int sum[rows][columns];
-    printf("Enter the elements of the first matrix:\n");
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < columns; j++){
-            scanf("%d", &matrix1[i][j]);
-        }
-    }
-    printf("Enter the elements of the second matrix:\n");
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < columns; j++){
-            scanf("%d", &matrix2[i][j]);
-        }
-    }
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < columns; j++){
-            sum[i][j] = matrix1[i][j] + matrix2[i][j];
-        }
-    }
-    printf("The sum of the two matrices is:\n");
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < columns; j++){
-            printf("%d ", sum[i][j]);
-        }
-        printf("\n");
-    }
-    return 0;
-
-    int saddle_point;
-    printf("Enter the number of rows: ");
-    scanf("%d", &rows);
-    printf("Enter the number of columns: ");
-    scanf("%d", &columns);
-    int matrix[rows][columns];
-    printf("Enter the elements of the matrix:\n");
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < columns; j++){
-            scanf("%d", &matrix[i][j]);
-        }
-    }
-    for(int i = 0; i < rows; i++){
-        int min = matrix[i][0];
-        int min_index = 0;
-        for(int j = 1; j < columns; j++){
-            if(matrix[i][j] < min){
-                min = matrix[i][j];
-                min_index = j;
-            }
-        }
-        int max = matrix[0][min_index];
-        for(int k = 1; k < rows; k++){
-            if(matrix[k][min_index] > max){
-                max = matrix[k][min_index];
-            }
-        }
-        if(min == max){
-            printf("The saddle point is: %d\n", min);
-            saddle_point = min;
-            break;
-        }
-    }
-    if(saddle_point == 0){
-        printf("No saddle point found.\n");
-    }
-    int inverse[columns][rows];
-    printf("Enter the elements of the matrix:\n");
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < columns; j++){
-            scanf("%d", &matrix[i][j]);
-        }
-    }
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < columns; j++){
-            inverse[j][i] = matrix[i][j];
-        }
-    }
-    printf("The inverse of the matrix is:\n");
-    for(int i = 0; i < columns; i++){
-        for(int j = 0; j < rows; j++){
-            printf("%d ", inverse[i][j]);
-        }
-        printf("\n");
-    }
-    int magic_square;
-    printf("Enter the size of the matrix: ");
-    scanf("%d", &rows);
-    int magic[rows][rows];
-    printf("Enter the elements of the matrix:\n");
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < rows; j++){
-            scanf("%d", &magic[i][j]);
-        }
-    }
-    int sum_diagonal1 = 0;
-    int sum_diagonal2 = 0;
-    for(int i = 0; i < rows; i++){
-        sum_diagonal1 += magic[i][i];
-        sum_diagonal2 += magic[i][rows - i - 1];
-    }
-    if(sum_diagonal1 == sum_diagonal2){
-        int sum_row = 0;
+    int matrix_add() {
+        int rows, cols;
+        printf("Enter the number of rows: ");
+        scanf("%d", &rows);
+        printf("Enter the number of columns: ");
+        scanf("%d", &cols); 
+        int matrix1[rows][cols], matrix2[rows][cols], result[rows][cols];
+        printf("Enter the elements of the first matrix:\n");
         for(int i = 0; i < rows; i++){
-            sum_row += magic[i][0];
-        }
-        if(sum_row == sum_diagonal1){
-            int sum_column = 0;
-            for(int j = 0; j < rows; j++){
-                sum_column += magic[0][j];
-            }
-            if(sum_column == sum_diagonal1){
-                printf("The matrix is a magic square.\n");
-                magic_square = 1;
+            for(int j = 0; j < cols; j++){
+                scanf("%d", &matrix1[i][j]);    
             }
         }
+        printf("Enter the elements of the second matrix:\n");
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                scanf("%d", &matrix2[i][j]);    
+            }
+        }
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                result[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+        printf("Result of matrix addition:\n");
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                printf("%d ", result[i][j]);    
+            }
+            printf("\n");
+        }
+        return 0;
     }
-    if(magic_square == 0){
-        printf("The matrix is not a magic square.\n");
+    int saddle_point(){
+        int rows, cols;
+        printf("Enter the number of rows: ");
+        scanf("%d", &rows);
+        printf("Enter the number of columns: ");
+        scanf("%d", &cols); 
+        int matrix[rows][cols];
+        printf("Enter the elements of the matrix:\n");
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                scanf("%d", &matrix[i][j]);    
+            }
+        }
+        for(int i = 0; i < rows; i++){
+            int min_row = matrix[i][0], min_col_index = 0;
+            for(int j = 1; j < cols; j++){
+                if(matrix[i][j] < min_row){
+                    min_row = matrix[i][j];
+                    min_col_index = j;
+                }
+            }
+            int max_col = matrix[0][min_col_index];
+            for(int k = 1; k < rows; k++){
+                if(matrix[k][min_col_index] > max_col){
+                    max_col = matrix[k][min_col_index];
+                }
+            }
+            if(min_row == max_col){
+                printf("Saddle point found at (%d, %d): %d\n", i, min_col_index, min_row);
+                return 0;
+            }
+        }
+        printf("No saddle point found.\n");
+        return 0;
+    }
+    int inverse_matrix(){
+        int rows, cols;
+        printf("Enter the number of rows: ");
+        scanf("%d", &rows);
+        printf("Enter the number of columns: ");
+        scanf("%d", &cols); 
+        if(rows != cols){
+            printf("Inverse is not possible for non-square matrices.\n");
+            return 0;
+        }
+        int matrix[rows][cols], inverse[rows][cols];
+        printf("Enter the elements of the matrix:\n");
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                scanf("%d", &matrix[i][j]);    
+            }
+        }
+        // Initialize inverse matrix to identity
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                inverse[i][j] = (i == j) ? 1 : 0;
+            }
+        }
+        // Perform Gaussian elimination
+        for(int i = 0; i < rows; i++){
+            if(matrix[i][i] == 0){
+                printf("Matrix is singular, inverse does not exist.\n");
+                return 0;
+            }
+            for(int j = 0; j < rows; j++){
+                if(i != j){
+                    int factor = matrix[j][i] / matrix[i][i];
+                    for(int k = 0; k < cols; k++){
+                        matrix[j][k] -= factor * matrix[i][k];
+                        inverse[j][k] -= factor * inverse[i][k];
+                    }
+                }
+            }
+        }
+        // Normalize the diagonal elements to 1
+        for(int i = 0; i < rows; i++){
+            int factor = matrix[i][i];
+            for(int j = 0; j < cols; j++){
+                matrix[i][j] /= factor;
+                inverse[i][j] /= factor;
+            }
+        }
+        printf("Inverse of the matrix:\n");
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                printf("%d ", inverse[i][j]);    
+            }
+            printf("\n");
+        }
+        return 0;
+    }
+    int magic_square(){
+        int n;
+        printf("Enter the size of the magic square (odd number): ");
+        scanf("%d", &n);
+        if(n % 2 == 0){
+            printf("Magic square is only possible for odd numbers.\n");
+            return 0;
+        }
+        int magic_square[n][n];
+        int num = 1, i = 0, j = n / 2;
+        while(num <= n * n){
+            magic_square[i][j] = num++;
+            int new_i = (i - 1 + n) % n;
+            int new_j = (j + 1) % n;
+            if(magic_square[new_i][new_j] != 0){
+                i++;
+            } else {
+                i = new_i;
+                j = new_j;
+            }
+        }
+        printf("Magic Square of size %d:\n", n);
+        for(i = 0; i < n; i++){
+            for(j = 0; j < n; j++){
+                printf("%d ", magic_square[i][j]);    
+            }
+            printf("\n");
+        }
+        return 0;
     }
     int choice;
-    printf("Enter your choice:\n1. Matrix Addition\n2. Saddle Point\n3
-. Matrix Inverse\n4. Magic Square\n");
+    printf("make a choice:\n");
+    printf("1. Matrix Addition\n2. Saddle Point\n3. Inverse of a Matrix\n4. Magic Square\n");
     scanf("%d", &choice);
     switch(choice){
         case 1:
-            // Matrix Addition code here
+            matrix_add();
             break;
         case 2:
-            // Saddle Point code here
+            saddle_point();
             break;
         case 3:
-            // Matrix Inverse code here
+            inverse_matrix();
             break;
         case 4:
-            // Magic Square code here       
+            magic_square();
             break;
         default:
             printf("Invalid choice.\n");
+    }
 }
