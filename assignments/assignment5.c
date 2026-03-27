@@ -1,6 +1,6 @@
 #include <stdio.h>
-void main(){
-    int matrix_add() {
+
+int matrix_add() {
         int rows, cols;
         printf("Enter the number of rows: ");
         scanf("%d", &rows);
@@ -31,8 +31,9 @@ void main(){
             }
             printf("\n");
         }
-        return 0;
+            return 0;
     }
+    
     int saddle_point(){
         int rows, cols;
         printf("Enter the number of rows: ");
@@ -66,8 +67,9 @@ void main(){
             }
         }
         printf("No saddle point found.\n");
-        return 0;
+            return 0;
     }
+    
     int inverse_matrix(){
         int rows, cols;
         printf("Enter the number of rows: ");
@@ -122,8 +124,9 @@ void main(){
             }
             printf("\n");
         }
-        return 0;
+            return 0;
     }
+    
     int magic_square(){
         int n;
         printf("Enter the size of the magic square (odd number): ");
@@ -153,7 +156,9 @@ void main(){
             printf("\n");
         }
         return 0;
-    }
+}
+
+int main(){
     int choice;
     printf("make a choice:\n");
     printf("1. Matrix Addition\n2. Saddle Point\n3. Inverse of a Matrix\n4. Magic Square\n");
@@ -174,4 +179,5 @@ void main(){
         default:
             printf("Invalid choice.\n");
     }
+    return 0;
 }
