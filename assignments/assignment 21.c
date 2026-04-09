@@ -2,13 +2,8 @@
 
 int main() {
     FILE *src, *dest;
-    char source[100], destination[100];
-
-    printf("Enter source file name: ");
-    scanf("%s", source);
-
-    printf("Enter destination file name: ");
-    scanf("%s", destination);
+    char source[] = "/workspaces/c-programming-30th-jan/assignments/a.txt";
+    char destination[] = "/workspaces/c-programming-30th-jan/assignments/b.txt";
 
     src = fopen(source, "r");
     if (src == NULL) { 
